@@ -52,7 +52,9 @@ namespace WindowsFormsApp1
                             fieldPluralize += "s";
                         }
 
-                        MessageBox.Show($"The change to {fieldPluralize} {ops.ConstraintColumns} values '{ops.ConstraintValue}' violates a constraint, reverting back to pre-edit value");
+                        MessageBox.Show($"The change to {fieldPluralize} {ops.ConstraintColumns} values" + 
+                                        $" '{ops.ConstraintValue}' violates a constraint, " + 
+                                        "reverting back to pre-edit value");
 
                     }
                     else

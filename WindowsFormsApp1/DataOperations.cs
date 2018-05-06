@@ -187,20 +187,14 @@ namespace WindowsFormsApp1
                     catch (SqlException ex)
                     {
 
-                        string message = null;
-                        int pos = 0;
-
                         //
                         // Proposed values for update causing the exception
                         //
                         ConstraintValue = Regex.Match(ex.Message, "\\(([^)]*)\\)").Groups[1].Value;
 
-                        pos = ex.Message.IndexOf(".", StringComparison.Ordinal);
-                        message = ex.Message.Substring(0, pos);
-
                         /*
-                         * See note 2 in Information.txt
-                         */
+                            * See note 2 in Information.txt
+                            */
                         if (ex.Number == 2601)
                         {
                             ConstraintColumns = GetIndexKeys(cmd, ex.Message,"Persons1");
@@ -260,7 +254,6 @@ namespace WindowsFormsApp1
                         string tableName = "";
                         string indexName = "";
 
-
                         /*
                          * We already know the value but if you want to get
                          * into some regx this shows how to parse the value.
@@ -307,10 +300,10 @@ namespace WindowsFormsApp1
             {
                 using (var cmd = new SqlCommand() { Connection = cn })
                 {
-                    var selectStatement = "SELECT 1 FROM ForumExample.dbo.Country WHERE Name = @Name";
+                    var selectStatement = "SELECT 1 FROM dbo.Country WHERE Name = @Name";
 
                     var insertStatement = "INSERT INTO dbo.Country (Name)  VALUES (@Name);" +
-                                          "SELECT CAST(scope_identity() AS int);";
+                                            "SELECT CAST(scope_identity() AS int);";
 
                     try
                     {

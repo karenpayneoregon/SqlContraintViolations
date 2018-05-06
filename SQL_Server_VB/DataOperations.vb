@@ -130,16 +130,10 @@ Public Class DataOperations
 
                 Catch ex As SqlException
 
-                    Dim message As String = Nothing
-                    Dim pos As Integer = 0
-
                     '
                     ' Proposed values for update causing the exception
                     '
                     ConstraintValue = Regex.Match(ex.Message, "\(([^)]*)\)").Groups(1).Value
-
-                    pos = ex.Message.IndexOf(".", StringComparison.Ordinal)
-                    message = ex.Message.Substring(0, pos)
 
 
                     If ex.Number = 2601 Then
