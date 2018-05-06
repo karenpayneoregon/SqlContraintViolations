@@ -30,6 +30,5 @@ Public Class BaseSqlServerConnections
         End Get
     End Property
 
-
 End Class
 

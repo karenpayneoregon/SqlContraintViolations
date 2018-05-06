@@ -1,0 +1,27 @@
+
+
+Note 1
+Assert against attempting to add a duplicate record 
+DECLARE @FirstName AS NCHAR(50) = 'Karen';
+DECLARE @LastName AS NCHAR(50) = 'Payne';
+
+UPDATE  dbo.Persons1
+SET     FirstName = @FirstName ,
+        LastName = @LastName
+WHERE   NOT EXISTS ( SELECT 1
+                     FROM   dbo.Persons1 AS p
+                     WHERE  p.FirstName = @FirstName
+                            AND p.LastName = @LastName );
+------------------------------------------------------------------------------------------------
+Note 2
+Run in a .sql file or in SQL-Server Management Studio to get errors for duplicate keys
+SELECT  error ,
+        description
+FROM    master..sysmessages
+WHERE   msglangid = 1033 /* eng */
+        AND description LIKE '%insert%duplicate%key%'
+ORDER BY error;
+
+
+Cannot insert duplicate key row in object 'dbo.Country' with unique index 'NameIndex1'. The duplicate key value is (Albania).
+The statement has been terminated.
