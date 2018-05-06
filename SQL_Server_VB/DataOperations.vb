@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Text.RegularExpressions
-
+'SqlContraintViolations
 Public Class DataOperations
     Inherits BaseSqlServerConnections
 
