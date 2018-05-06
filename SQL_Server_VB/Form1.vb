@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     Private bs As New BindingSource
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub cmdUpdateCurrent_Click(sender As Object, e As EventArgs) Handles cmdUpdateCurrent.Click
 
         Dim row As DataRow = CType(bs.Current, DataRowView).Row
         Dim ops As New DataOperations
@@ -25,15 +25,14 @@
             End If
         End If
     End Sub
+    Private Sub cmdSetupForFailure_Click(sender As Object, e As EventArgs) Handles cmdSetupForFailure.Click
+        Dim row As DataRow = CType(bs.Current, DataRowView).Row
+        row.SetField(Of String)("FirstName", "Karen")
+        row.SetField(Of String)("LastName", "Payne")
+    End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim ops As New DataOperations
         bs.DataSource = ops.Read
         DataGridView1.DataSource = bs
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim row As DataRow = CType(bs.Current, DataRowView).Row
-        row.SetField(Of String)("FirstName", "Karen")
-        row.SetField(Of String)("LastName", "Payne")
     End Sub
 End Class
